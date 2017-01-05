@@ -14,8 +14,6 @@ rankall <- function(outcome, rank = "best"){
     'rename columns'
     colnames(data)<- c("hospital", "state", "outcome")
     
-
-    
     'order data'
     li <- order(data$state, data$outcome, data$hospital)
     data <- data[li,]
