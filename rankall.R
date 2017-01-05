@@ -1,4 +1,9 @@
 rankall <- function(outcome, rank = "best"){
+    'validate args'
+    if (outcome %in% c("heart attack","heart failure", "pneumonia") == FALSE){
+        stop("invalid outcome")
+    }
+    
     data <- read.csv("rprog_data_ProgAssignment3-data/outcome-of-care-measures.csv", 
                      na.strings="Not Available", 
                      stringsAsFactors = FALSE)
@@ -8,6 +13,8 @@ rankall <- function(outcome, rank = "best"){
     data <- data[,c(2,7,outcomes[[outcome]])]
     'rename columns'
     colnames(data)<- c("hospital", "state", "outcome")
+    
+
     
     'order data'
     li <- order(data$state, data$outcome, data$hospital)
